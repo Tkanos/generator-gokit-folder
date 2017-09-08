@@ -4,6 +4,8 @@ I want to generate the scaffolding of my gokit folder with all files and already
 
 ## Install
 
+Clone this repository (git clone)
+
 If yeoman is not installed please
 ```bash
 npm install -g yo
