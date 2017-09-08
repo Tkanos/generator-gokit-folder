@@ -1,0 +1,21 @@
+/*
+var <%= camel_model_name %>Endpoints <%= package_name %>.Endpoints
+{
+    <%= camel_model_name %>Service := <%= package_name %>.NewService()
+
+    tracer = stdopentracing.GlobalTracer()
+    getByIDEndpoint := <%= package_name %>.MakeGetByIDEndpoint(<%= camel_model_name %>Service)
+    getByIDEndpoint = opentracing.TraceServer(tracer, "<%= model_name %>Service::Get<%= model_name %>ByID")(getByIDEndpoint)
+
+    createEndpoint := <%= package_name %>.MakeCreateEndpoint(<%= camel_model_name %>Service)
+    createEndpoint = opentracing.TraceServer(tracer, "<%= model_name %>Service::Create<%= model_name %>")(createEndpoint)
+
+    <%= camel_model_name %>Endpoints = <%= package_name %>.Endpoints{
+        GetByID: getByIDEndpoint,
+        Create:  createEndpoint,
+    }
+}
+
+mux.Handle("/<%= camel_model_name %>s/", <%= package_name %>.MakeHTTPHandler(<%= camel_model_name %>Endpoints, tracer))
+
+*/
