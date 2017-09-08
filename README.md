@@ -1,4 +1,4 @@
-# yeoman generator for microservice in go
+# yeoman generator for microservice in gokit
 
 I want to generate the scaffolding of my gokit folder with all files and already unit tested.
 
