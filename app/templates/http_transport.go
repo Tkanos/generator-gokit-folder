@@ -27,14 +27,14 @@ func MakeHTTPHandler(endpoints Endpoints, tracer stdopentracing.Tracer) http.Han
 		endpoints.GetByID,
 		decodeGet<%= model_name %>Request,
 		encodeResponse,
-		append(options, httptransport.ServerBefore(opentracing.HTTPToContext(tracer, "calling HTTP GET /{id}", nil)))...,
+		append(options, httptransport.ServerBefore(opentracing.FromHTTPRequest(tracer, "calling HTTP GET /{id}", nil)))...,
 	)
 
 	create<%= model_name %>Handler := kithttp.NewServer(
 		endpoints.Create,
 		decodeCreate<%= model_name %>Request,
 		encodeCreate<%= model_name %>Response,
-		append(options, httptransport.ServerBefore(opentracing.HTTPToContext(tracer, "calling POST /", nil)))...,
+		append(options, httptransport.ServerBefore(opentracing.FromHTTPRequest(tracer, "calling POST /", nil)))...,
 	)
 
 	r := mux.NewRouter().PathPrefix("/<%= camel_model_name %>s/").Subrouter().StrictSlash(true)
